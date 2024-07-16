@@ -16,10 +16,9 @@ fuel metering systems will be discussed in this course.",
   "syllabus_url": "",
   "textbook_ISBN": -1,
   "course_offered": ["Fall","Summer"],
-  "corerequisites" ["AET101L"], 
+  "corereqs" ["AET 101L"], 
   "prereqs": -1,
   "credits": 3 (2,2),
-  "level": 100,
   }
 ]
 
