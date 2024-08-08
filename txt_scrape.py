@@ -10,8 +10,8 @@ JSON_to_add = {"course_name": "",
                "description": "",
                "syllabus_url": "",
                "textbook_ISBN": -1,
-               "course_offered": [],
-               "corereqs": [],
+               "course_offered": "",
+               "coreqs": "",
                "prereqs": -1,
                "credits": -1}
 while line:
@@ -32,18 +32,24 @@ while line:
                        "description": "",
                        "syllabus_url": "",
                        "textbook_ISBN": -1,
-                       "course_offered": [],
-                       "corereqs": [],
+                       "course_offered": "",
+                       "coreqs": "",
                        "prereqs": -1,
                        "credits": -1}
     else:
         JSON_to_add["description"] += line
         if "Prerequisite(s):" in line or JSON_to_add["prereqs"] != -1:
             try:
-                start = line.index("Prerequisite(s):")
+                start = line.index("Prerequisite")
                 JSON_to_add["prereqs"] = line[start + 17:]
             except ValueError:
                 JSON_to_add["prereqs"] += line
+        if "Corequisite" in line or JSON_to_add["coreqs"] != -1:
+            try:
+                start = line.index("Corequisite")
+                JSON_to_add["coreqs"] = line[start + 17:]
+            except ValueError:
+                JSON_to_add["coreqs"] += line
     line = read_file.readline()
 
 json.dump(JSONs, write_file)
